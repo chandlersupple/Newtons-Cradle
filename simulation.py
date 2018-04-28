@@ -1,5 +1,5 @@
 # Chandler Supple, 4/28/2018
-# A simulation of Newton's Cradle in a vacuum environment, devoid of gravity and friction.
+# A simulation of Newton's Cradle in a vacuum environment, devoid of weight and friction.
 
 import sys
 import math
