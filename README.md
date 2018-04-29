@@ -8,3 +8,4 @@ The code, which was developed in Python 2.7.14, is compatible with Python 2.7, o
 Controls: 
 To release the ball, of which can be moved along the horizontal axis, press the 'space' bar. 
 The simulation will continue until the user presses 's'. When the simulation has been stopped, the ball can be reset, and released again.
+In the case an error occurs during the simulation, the 'r' key can be pressed to reset.
