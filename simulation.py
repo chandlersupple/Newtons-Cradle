@@ -155,4 +155,4 @@ try:
     
 except:
     if event.type != pygame.QUIT:
-        print('An error has occured.')
+        print('Sorry, but it looks like an error has occured.')
