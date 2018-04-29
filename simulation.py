@@ -31,7 +31,7 @@ light_blue = (180,180,255)
 random_color = ((random.randint(50,230)), (random.randint(50,230)), (random.randint(50,230)))
 
 font = pygame.font.SysFont("corbel", 35)
-title = font.render("Newton's Cradle", 3, (dark_brown))
+title = font.render("Newton's Cradle", 5, (dark_brown))
 
 def base():
     pygame.draw.rect(screen, brown, (0, 400, 1000, 100), 0)
@@ -72,82 +72,87 @@ def end_marble(x, y):
     pygame.draw.line(screen, light_grey, (544,130), (x,y), 2)
     pygame.draw.circle(screen, random_color, (x, y), 20, 0)
 
-while True:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-    
-    pressed = pygame.key.get_pressed()
-    if pressed[pygame.K_SPACE]: clicked = 1
-    if pressed[pygame.K_r]: clicked = 0
-    
-    if (clicked == 0):        
-        x, y__ = pygame.mouse.get_pos()
-        y = int(round(math.sqrt(300000-(((x-436)**2)/2))-216.5,0))
-        x_ = 340
-        y_ = 320
-        x_ch = x
-        y_ch = y
-    
-    if (clicked == 1):
-        diff = x_ch - 544
-        if (i <= diff):
-            x = x_ch - (i)
+try:
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+
+        pressed = pygame.key.get_pressed()
+        if pressed[pygame.K_SPACE]: clicked = 1
+        if pressed[pygame.K_r]: clicked = 0
+
+        if (clicked == 0):        
+            x, y__ = pygame.mouse.get_pos()
             y = int(round(math.sqrt(300000-(((x-436)**2)/2))-216.5,0))
-            i = i + 25
-            if pressed[pygame.K_s]: clicked = 0
-        if (i >= diff):
-            x = 544
-            y = 320
-            i = 0
-            clicked = 2
-            
-    if (clicked == 2):
-        diff = x_ch - 544
-        if (i <= diff):
-            x_ = 340 - (i)
-            y_ = int(round(math.sqrt(300000-(((x_-436)**2)/2))-216.5,0))
-            i = i + 25
-            if pressed[pygame.K_s]: clicked = 0
-        if (i >= diff):
-            i = 0
-            clicked = 3
-            
-    if (clicked == 3):
-        diff = x_ch - 544
-        if (i <= diff):
-            x_ = (340-diff) + (i)
-            y_ = int(round(math.sqrt(300000-(((x_-436)**2)/2))-216.5,0))
-            i = i + 25
-            if pressed[pygame.K_s]: clicked = 0
-        if (i >= diff):
             x_ = 340
             y_ = 320
-            i = 0
-            clicked = 4
-            
-    if (clicked == 4):
-        diff = x_ch - 544
-        if (i <= diff):
-            x = 544 + (i)
-            y = int(round(math.sqrt(300000-(((x-436)**2)/2))-216.5,0))
-            i = i + 25
-            if pressed[pygame.K_s]: clicked = 0
-        if (i >= diff):
-            i = 0
-            clicked = 1
+            x_ch = x
+            y_ch = y
 
-#    print('x: %s' %(x))
-#    print('y: %s' %(y))
-        
-    screen.fill(grey)
-    base()
-    frame()
-    first_marble(x_, y_)
-    marbles()
-    end_marble(x, y)
+        if (clicked == 1):
+            diff = x_ch - 544
+            if (i <= diff):
+                x = x_ch - (i)
+                y = int(round(math.sqrt(300000-(((x-436)**2)/2))-216.5,0))
+                i = i + 25
+                if pressed[pygame.K_s]: clicked = 0
+            if (i >= diff):
+                x = 544
+                y = 320
+                i = 0
+                clicked = 2
+
+        if (clicked == 2):
+            diff = x_ch - 544
+            if (i <= diff):
+                x_ = 340 - (i)
+                y_ = int(round(math.sqrt(300000-(((x_-436)**2)/2))-216.5,0))
+                i = i + 25
+                if pressed[pygame.K_s]: clicked = 0
+            if (i >= diff):
+                i = 0
+                clicked = 3
+
+        if (clicked == 3):
+            diff = x_ch - 544
+            if (i <= diff):
+                x_ = (340-diff) + (i)
+                y_ = int(round(math.sqrt(300000-(((x_-436)**2)/2))-216.5,0))
+                i = i + 25
+                if pressed[pygame.K_s]: clicked = 0
+            if (i >= diff):
+                x_ = 340
+                y_ = 320
+                i = 0
+                clicked = 4
+
+        if (clicked == 4):
+            diff = x_ch - 544
+            if (i <= diff):
+                x = 544 + (i)
+                y = int(round(math.sqrt(300000-(((x-436)**2)/2))-216.5,0))
+                i = i + 25
+                if pressed[pygame.K_s]: clicked = 0
+            if (i >= diff):
+                i = 0
+                clicked = 1
+
+    #    print('x: %s' %(x))
+    #    print('y: %s' %(y))
+
+        screen.fill(grey)
+        base()
+        frame()
+        first_marble(x_, y_)
+        marbles()
+        end_marble(x, y)
+
+        screen.blit(title, (100,50))
+
+        pygame.display.flip()
+        clock.tick(60)
     
-    screen.blit(title, (100,50))
-        
-    pygame.display.flip()
-    clock.tick(60)
+except:
+    if event.type != pygame.QUIT:
+        print('An error has occured.')
