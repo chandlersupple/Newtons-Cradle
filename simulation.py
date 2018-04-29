@@ -79,6 +79,7 @@ while True:
     
     pressed = pygame.key.get_pressed()
     if pressed[pygame.K_SPACE]: clicked = 1
+    if pressed[pygame.K_r]: clicked = 0
     
     if (clicked == 0):        
         x, y__ = pygame.mouse.get_pos()
