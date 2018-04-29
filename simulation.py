@@ -66,6 +66,7 @@ def marbles():
 def end_marble(x, y):
     if (x<544):
         x = 544
+        y = 320
     if (y>322):
         y = 320
     pygame.draw.line(screen, light_grey, (544,130), (x,y), 2)
